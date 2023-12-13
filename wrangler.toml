@@ -1,0 +1,9 @@
+name = "next-auth-drizzle-d1"
+compatibility_date = "2023-10-16"
+node_compat = true
+
+[[d1_databases]]
+binding = "DB" # i.e. available in your Worker on env.DB
+database_name = "db"
+database_id = "584dc67c-8f66-452c-a4bd-13343ca3ee60"
+migrations_dir = './src/lib/db/migrations'

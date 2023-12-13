@@ -1,5 +1,5 @@
 {
-  "name": "twitch-clone",
+  "name": "next-auth-drizzle-d1-test",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,23 +10,50 @@
     "pages:build": "pnpm next-on-pages",
     "pages:deploy": "pnpm pages:build && wrangler pages deploy .vercel/output/static",
     "pages:watch": "pnpm next-on-pages --watch",
-    "pages:dev": "pnpm wrangler pages dev .vercel/output/static --compatibility-date=2023-12-06 --compatibility-flag=nodejs_compat"
+    "pages:dev": "pnpm wrangler pages dev .vercel/output/static --compatibility-date=2023-12-06 --compatibility-flag=nodejs_compat",
+    "db:generate": "drizzle-kit generate:sqlite",
+    "db:migrate": "wrangler d1 migrations apply db",
+    "db:migrate:local": "wrangler d1 migrations apply db --local",
+    "db:drop": "drizzle-kit drop",
+    "db:pull": "drizzle-kit introspect:sqlite",
+    "db:push": "drizzle-kit push:sqlite",
+    "db:studio": "drizzle-kit studio",
+    "db:check": "drizzle-kit check:sqlite"
   },
   "dependencies": {
+    "@auth/core": "0.18.1",
+    "@auth/drizzle-adapter": "^0.3.10",
+    "@radix-ui/react-avatar": "^1.0.4",
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
+    "@radix-ui/react-navigation-menu": "^1.1.4",
+    "@radix-ui/react-slot": "^1.0.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "drizzle-orm": "^0.29.1",
+    "lucide-react": "^0.294.0",
     "next": "14.0.3",
+    "next-auth": "5.0.0-beta.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "tailwind-merge": "^2.1.0",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@cloudflare/next-on-pages": "1",
-    "@types/node": "^20",
+    "@types/node": "^18",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
+    "drizzle-kit": "^0.20.6",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
     "typescript": "^5",
-    "vercel": "^32.7.0",
     "wrangler": "^3.19.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "@auth/core": "0.18.1"
+    }
   }
 }
